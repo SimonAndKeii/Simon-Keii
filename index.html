@@ -4,51 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Starlit Love</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Great+Vibes&family=Lobster&family=Montserrat:wght@700&family=Orbitron&family=Pacifico&family=Roboto:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="starfield"></canvas>
     <header class="site-header">
-        <h1>Aku cinta kamu, sayang.</h1>
+        <h1 style="color: #f472b6;">Simon & Keii</h1>
         <p class="subtitle">A universe of love awaits...</p>
     </header>
+
+    <canvas id="starfield"></canvas>
+    <div id="sparkle-container"></div>
 
     <section class="gallery-section">
         <h2>Our Precious Moments</h2>
         <div class="photo-gallery">
-            <div class="photo-holder polaroid" data-caption="First Date">
+            <div class="photo-holder polaroid pink-mount" >
                 <img src="1.png" alt="Moment 1">
-                <div class="caption">First Date</div>
+                <div class="caption">First Date Bliss</div>
             </div>
-            <div class="photo-holder blooming-flower">
+            <div class="photo-holder yellow-mount blooming-flower">
                 <img src="2.png" alt="Moment 2">
+                <div class="caption">Sunset Smiles</div>
             </div>
-            <div class="photo-holder falling-stars">
-                <div class="star-overlay">✨</div>
+            <div class="photo-holder grey-mount falling-stars">
+                <div class="star-overlay"></div>
                 <img src="3.png" alt="Moment 3">
+                <div class="caption">Starry Night</div>
             </div>
-            <div class="photo-holder heartbeat">
+            <div class="photo-holder blue-mount heartbeat">
                 <img src="4.png" alt="Moment 4">
+                <div class="caption">Heartbeat Moment</div>
             </div>
-            <div class="photo-holder love-note" data-note="Our secret smile.">
+            <div class="photo-holder green-mount love-note">
                 <img src="5.png" alt="Moment 5">
-                <div class="note">Our secret smile.</div>
+                <div class="caption">Secret Smile</div>
             </div>
-            <div class="photo-holder floating-bubble">
+            <div class="photo-holder orange-mount floating-bubble">
                 <img src="6.png" alt="Moment 6">
+                <div class="caption">Floating Love</div>
             </div>
-            <div class="photo-holder sparkling-frame">
+            <div class="photo-holder purple-mount sparkling-frame">
                 <img src="7.png" alt="Moment 7">
+                <div class="caption">Sparkling Eyes</div>
             </div>
-            <div class="photo-holder intertwined-vines">
+            <div class="photo-holder teal-mount intertwined-vines">
                 <img src="8.png" alt="Moment 8">
+                <div class="caption">Intertwined Hearts</div>
             </div>
-            <div class="photo-holder constellation-connect">
+            <div class="photo-holder lime-mount constellation-connect">
                 <img src="9.png" alt="Moment 9">
+                <div class="caption">Constellation Bond</div>
             </div>
-            <div class="photo-holder fabric-pocket">
+            <div class="photo-holder cyan-mount fabric-pocket">
                 <img src="10.png" alt="Moment 10">
+                <div class="caption">Pocket of Love</div>
             </div>
         </div>
     </section>
@@ -56,9 +66,8 @@
     <section class="video-section">
         <h2>Our Special Video</h2>
         <div class="video-container">
-            <div class="nebula-overlay">
-                <iframe id="love-video" width="560" height="315" src="your-video-url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="play-button star-icon" onclick="playPauseVideo()"></div>
+            <div class="cyberpunk-border">
+                <iframe id="love-video" src="Simon&Kei.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -81,19 +90,20 @@
         <div id="wish-container"></div>
     </section>
 
-    <div id="sparkle-container"></div>
+    <div class="desert-landscape">
+        <div class="dune dune1"></div>
+        <div class="dune dune2"></div>
+        <div class="dune dune3"></div>
+        <div class="dune dune4"></div>
+    </div>
+
     <footer class="site-footer">
-        <p>&copy; 2025 A Universe of Love</p>
+        <p>© 2025 A Universe of Love</p>
         <div class="social-links">
-            <a href="#"><img src="heart-icon.png" alt="Love"></a>
-            <a href="#"><img src="star-icon.png" alt="Stars"></a>
+            <a href="#"><img src="Heart.png" alt="Love"></a>
+            <a href="#"><img src="Star.png" alt="Star"></a>
         </div>
     </footer>
-    <div class="desert-landscape">
-        <div class="dune"></div>
-        <div class="dune second"></div>
-        <div class="dune third"></div>
-    </div>
 
     <script src="script.js"></script>
 </body>
