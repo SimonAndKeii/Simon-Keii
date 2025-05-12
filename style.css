@@ -1,0 +1,493 @@
+body {
+    margin: 0;
+    background-color: #030712; /* Deep, dark background */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally by default */
+    justify-content: flex-start; /* Align items from the top */
+    position: relative; /* For absolute positioning of starfield and sparkles */
+    padding-bottom: 100px; /* Adjust bottom padding for desert on different screens */
+    overflow-y: auto; /* Allow vertical scrolling, but only when needed by content */
+    text-align: center; /* Center inline content by default */
+}
+
+#starfield {
+    position: fixed; /* Fixed position so it stays in the background during scroll */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Behind all other content */
+}
+
+#sparkle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow interaction with elements below */
+    overflow: hidden; /* Crucial: Prevent sparkles from causing scrollbar issues */
+}
+
+.sparkle {
+    position: absolute;
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+/* --- Site Header --- */
+.site-header {
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem; /* Adjust padding for responsiveness */
+    z-index: 10;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.site-header h1 {
+    font-size: 2rem; /* Adjust font size for responsiveness */
+    margin-bottom: 0.5rem;
+}
+
+.site-header .subtitle {
+    font-size: 0.9rem; /* Adjust font size for responsiveness */
+    opacity: 0.7;
+}
+
+/* --- Photo Gallery Section --- */
+.gallery-section {
+    z-index: 10;
+    padding: 2rem 1rem; /* Adjust padding for responsiveness */
+    text-align: center;
+    width: 95%;
+    max-width: 1200px;
+}
+
+.gallery-section h2 {
+    font-size: 1.8rem; /* Adjust font size for responsiveness */
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust min width for smaller screens */
+    gap: 0.8rem; /* Adjust gap for responsiveness */
+    padding: 0.8rem;
+    justify-content: center; /* Center the grid items */
+}
+
+.photo-holder {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.2rem; /* Adjust border radius for responsiveness */
+    box-shadow: 0 0.15rem 0.3rem rgba(0, 0, 0, 0.4);
+}
+
+.photo-holder img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Polaroid Style */
+.polaroid {
+    background-color: white;
+    padding: 0.4rem; /* Adjust padding for responsiveness */
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.polaroid img {
+    border: 0.15rem solid white; /* Adjust border for responsiveness */
+}
+
+.polaroid .caption {
+    font-size: 0.6rem; /* Adjust font size for responsiveness */
+    text-align: center;
+    margin-top: 0.2rem;
+    color: #14b8a6; /* Dark Cyan */
+    font-style: italic;
+}
+
+/* Blooming Flower */
+.blooming-flower::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%; /* Adjust bloom size for responsiveness */
+    height: 50%; /* Adjust bloom size for responsiveness */
+    border: 1px solid #f472b6; /* Adjust border for responsiveness */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out, border-color 0.4s ease-out;
+}
+
+/* Falling Stars */
+.falling-stars .star-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('star-pattern-mobile.png') repeat; /* Consider a mobile-optimized pattern */
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out, transform 0.5s ease-out;
+}
+
+/* Heartbeat */
+/* Love Note */
+.love-note .note {
+    font-size: 0.6rem; /* Adjust font size for responsiveness */
+    padding: 0.2rem; /* Adjust padding for responsiveness */
+    bottom: -2rem; /* Adjusted for smaller screens */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Floating Bubble */
+.floating-bubble::before {
+    border: 1px solid #3b82f6; /* Adjust border for responsiveness */
+}
+
+/* Sparkling Frame */
+.sparkling-frame::before {
+    border: 1px solid transparent; /* Adjust border for responsiveness */
+    border-radius: 0.3rem; /* Adjust border radius for responsiveness */
+}
+
+/* Intertwined Vines */
+.intertwined-vines::before, .intertwined-vines::after {
+    border: 1px solid #8b5cf6; /* Adjust border for responsiveness */
+}
+
+/* Constellation Connect */
+.constellation-connect::before {
+    border: 0.6px dotted white; /* Adjust border for responsiveness */
+}
+
+/* Fabric Pocket */
+.fabric-pocket {
+    padding: 0.6rem; /* Adjust padding for responsiveness */
+    border-radius: 0.3rem; /* Adjust border radius for responsiveness */
+}
+
+/* --- Video Section --- */
+.video-section {
+    z-index: 10;
+    padding: 2rem 1rem; /* Adjust padding for responsiveness */
+    text-align: center;
+    color: white;
+    width: 95%;
+    max-width: 800px;
+}
+
+.video-section h2 {
+    font-size: 1.8rem; /* Adjust font size for responsiveness */
+    margin-bottom: 1rem;
+}
+
+.video-container {
+    max-width: 100%;
+}
+
+.video-container iframe {
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.play-button {
+    width: 1.5rem; /* Adjust button size for responsiveness */
+    height: 1.5rem; /* Adjust button size for responsiveness */
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.star-icon::before {
+    font-size: 1.2rem; /* Adjust star size for responsiveness */
+}
+
+.play-button.playing::before {
+    font-size: 0.8rem; /* Adjust pause size for responsiveness */
+}
+
+/* --- Quote Carousel Section --- */
+.quote-carousel-section {
+    z-index: 10;
+    padding: 2rem 1rem; /* Adjust padding for responsiveness */
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 600px;
+}
+
+.quote-carousel-section h2 {
+    font-size: 1.8rem; /* Adjust font size for responsiveness */
+    margin-bottom: 1rem;
+}
+
+.quote-carousel {
+    width: 100%;
+}
+
+.quote {
+    font-size: 1rem; /* Adjust font size for responsiveness */
+    padding: 0.4rem; /* Adjust padding for responsiveness */
+}
+
+/* --- Wish Star Section --- */
+.wish-star-section {
+    z-index: 10;
+    padding: 2rem 1rem; /* Adjust padding for responsiveness */
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 600px;
+}
+
+.wish-star-section h2 {
+    font-size: 1.8rem; /* Adjust font size for responsiveness */
+    margin-bottom: 0.8rem;
+}
+
+.wish-input-container {
+    display: flex;
+    flex-direction: column; /* Stack input and button on smaller screens */
+    align-items: center;
+    gap: 0.4rem; /* Adjust gap for responsiveness */
+}
+
+#wish-input {
+    padding: 0.5rem; /* Adjust padding for responsiveness */
+    font-size: 0.8rem; /* Adjust font size for responsiveness */
+    width: 80%;
+    margin-right: 0;
+}
+
+#wish-button {
+    padding: 0.5rem 1rem; /* Adjust padding for responsiveness */
+    font-size: 0.8rem; /* Adjust font size for responsiveness */
+    width: 80%;
+}
+
+#wish-container {
+    font-size: 0.9rem; /* Adjust font size for responsiveness */
+    margin-top: 0.4rem;
+}
+
+.wish {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.2rem;
+    margin: 0.4rem auto;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    width: 80%;
+}
+
+/* --- Site Footer --- */
+.site-footer {
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem; /* Adjust padding for responsiveness */
+    z-index: 10;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 1.5rem; /* Adjust margin top for responsiveness */
+}
+
+.site-footer p {
+    font-size: 0.7rem; /* Adjust font size for responsiveness */
+    margin-bottom: 0.4rem;
+}
+
+.social-links {
+    margin-top: 0.4rem;
+}
+
+.social-links a {
+    margin-left: 0.4rem;
+}
+
+.social-links img {
+    width: 18px; /* Adjust icon size for responsiveness */
+    height: 18px; /* Adjust icon size for responsiveness */
+}
+
+/* --- Desert Landscape (at the very bottom) --- */
+.desert-landscape {
+    position: fixed; /* Fixed to the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px; /* Adjust height for responsiveness */
+    background: linear-gradient(to top, #a85702, transparent); /* Sand color */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center; /* Center the dunes */
+    gap: 8%; /* Space out the dunes */
+    padding-bottom: 8px; /* Adjust padding for responsiveness */
+    z-index: 5; /* Above the starfield */
+}
+
+.dune {
+    width: 30px; /* Adjust dune width for responsiveness */
+    height: 20px; /* Adjust dune height for responsiveness */
+    background-color: #b86a0c;
+    border-radius: 50%;
+}
+
+.dune.second {
+    width: 45px; /* Adjust dune width for responsiveness */
+    height: 28px; /* Adjust dune height for responsiveness */
+    background-color: #c97b1d;
+}
+
+.dune.third {
+    width: 25px; /* Adjust dune width for responsiveness */
+    height: 18px; /* Adjust dune height for responsiveness */
+    background-color: #a85702;
+}
+
+/* --- Media Queries for different screen sizes --- */
+
+/* For tablets and larger phones */
+@media (min-width: 600px) {
+    .site-header {
+        padding: 4rem 2rem;
+    }
+
+    .site-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .site-header .subtitle {
+        font-size: 1rem;
+    }
+
+    .gallery-section {
+        padding: 3rem 1rem;
+    }
+
+    .gallery-section h2 {
+        font-size: 2rem;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .polaroid {
+        padding: 0.5rem;
+    }
+
+    .polaroid img {
+        border: 0.2rem solid white;
+    }
+
+    .polaroid .caption {
+        font-size: 0.7rem;
+        margin-top: 0.3rem;
+    }
+
+    .love-note .note {
+        font-size: 0.7rem;
+        padding: 0.3rem;
+    }
+
+    .video-section {
+        padding: 3rem 1rem;
+    }
+
+    .video-section h2 {
+        font-size: 2rem;
+    }
+
+    .play-button {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .star-icon::before {
+        font-size: 1.5rem;
+    }
+
+    .play-button.playing::before {
+        font-size: 1rem;
+    }
+
+    .quote-carousel-section {
+        padding: 3rem 1rem;
+    }
+
+    .quote-carousel-section h2 {
+        font-size: 2rem;
+    }
+
+    .quote {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+    }
+
+    .wish-star-section {
+        padding: 3rem 1rem;
+    }
+
+    .wish-star-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .wish-input-container {
+        flex-direction: row; /* Revert to row for larger screens */
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #wish-input {
+        width: auto;
+        margin-right: 1rem;
+    }
+
+    #wish-button {
+        width: auto;
+    }
+
+    .wish {
+        width: auto;
+    }
+
+    .site-footer {
+        padding: 2rem 1rem;
+        flex-direction: row; /* Revert to row for larger screens */
+        justify-content: center;
+        gap: 2rem; /* Space out elements in footer */
+    }
+
+    .site-footer p {
+        margin-bottom: 0; /* Remove bottom margin for side-by-side layout */
+    }
+
+    .social-links {
+        margin-top: 0; /* Remove top margin for side-by-side layout */
+    }
+
+    .desert-landscape {

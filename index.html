@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlit Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+    <header class="site-header">
+        <h1>Aku cinta kamu, sayang.</h1>
+        <p class="subtitle">A universe of love awaits...</p>
+    </header>
+
+    <section class="gallery-section">
+        <h2>Our Precious Moments</h2>
+        <div class="photo-gallery">
+            <div class="photo-holder polaroid" data-caption="First Date">
+                <img src="1.png" alt="Moment 1">
+                <div class="caption">First Date</div>
+            </div>
+            <div class="photo-holder blooming-flower">
+                <img src="2.png" alt="Moment 2">
+            </div>
+            <div class="photo-holder falling-stars">
+                <div class="star-overlay">✨</div>
+                <img src="3.png" alt="Moment 3">
+            </div>
+            <div class="photo-holder heartbeat">
+                <img src="4.png" alt="Moment 4">
+            </div>
+            <div class="photo-holder love-note" data-note="Our secret smile.">
+                <img src="5.png" alt="Moment 5">
+                <div class="note">Our secret smile.</div>
+            </div>
+            <div class="photo-holder floating-bubble">
+                <img src="6.png" alt="Moment 6">
+            </div>
+            <div class="photo-holder sparkling-frame">
+                <img src="7.png" alt="Moment 7">
+            </div>
+            <div class="photo-holder intertwined-vines">
+                <img src="8.png" alt="Moment 8">
+            </div>
+            <div class="photo-holder constellation-connect">
+                <img src="9.png" alt="Moment 9">
+            </div>
+            <div class="photo-holder fabric-pocket">
+                <img src="10.png" alt="Moment 10">
+            </div>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <h2>Our Special Video</h2>
+        <div class="video-container">
+            <div class="nebula-overlay">
+                <iframe id="love-video" width="560" height="315" src="your-video-url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="play-button star-icon" onclick="playPauseVideo()"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-carousel-section">
+        <h2>Words of Love</h2>
+        <div class="quote-carousel">
+            <div class="quote active" style="color: #f472b6;">"You are my greatest adventure."</div>
+            <div class="quote" style="color: #8b5cf6;">"Every moment with you is a treasure."</div>
+            <div class="quote" style="color: #3b82f6;">"My heart beats only for you."</div>
+        </div>
+    </section>
+
+    <section class="wish-star-section">
+        <h2>Make a Wish Upon a Star</h2>
+        <div class="wish-input-container">
+            <input type="text" id="wish-input" placeholder="Your wish...">
+            <button id="wish-button">Send Wish</button>
+        </div>
+        <div id="wish-container"></div>
+    </section>
+
+    <div id="sparkle-container"></div>
+    <footer class="site-footer">
+        <p>&copy; 2025 A Universe of Love</p>
+        <div class="social-links">
+            <a href="#"><img src="heart-icon.png" alt="Love"></a>
+            <a href="#"><img src="star-icon.png" alt="Stars"></a>
+        </div>
+    </footer>
+    <div class="desert-landscape">
+        <div class="dune"></div>
+        <div class="dune second"></div>
+        <div class="dune third"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
