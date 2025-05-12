@@ -7,7 +7,6 @@ const quotes = document.querySelectorAll('.quote');
 const wishInput = document.getElementById('wish-input');
 const wishButton = document.getElementById('wish-button');
 const wishContainer = document.getElementById('wish-container');
-const backgroundMusic = document.getElementById('background-music');
 
 // Set canvas size
 canvas.width = window.innerWidth;
@@ -144,15 +143,14 @@ function drawStars() {
 }
 
 // --- Falling Stars Background ---
-const maxFallingStars = 10;
+const maxFallingStars = 10; // Reduced to prevent glitching
 const fallingStars = [];
 
 function createFallingStar() {
     return {
-        x: randomRange(0, canvas.width),
-        y: -10,
+        x: randomRange(0, canvas.width), // Random vertical start position
+        y: -10, // Start just above canvas
         speed: randomRange(1, 3),
-        angle: randomRange(-0.5, 0.5),
         length: randomRange(10, 20),
         opacity: randomRange(0.5, 0.9),
         trailColor: `rgba(255, 182, 193, ${randomRange(0.5, 0.9)})`,
@@ -161,7 +159,7 @@ function createFallingStar() {
 }
 
 function spawnFallingStar() {
-    if (fallingStars.length < maxFallingStars && Math.random() < 0.02) {
+    if (fallingStars.length < maxFallingStars && Math.random() < 0.02) { // 2% chance per frame
         fallingStars.push(createFallingStar());
     }
 }
@@ -171,16 +169,15 @@ function updateFallingStars() {
         const star = fallingStars[i];
         if (star.active) {
             star.y += star.speed;
-            star.x += star.speed * star.angle;
-            if (star.y > canvas.height || star.x < 0 || star.x > canvas.width) {
-                star.active = false;
+            if (star.y > canvas.height) {
+                star.active = false; // Disappear when off screen
             }
         }
         if (!star.active) {
-            fallingStars.splice(i, 1);
+            fallingStars.splice(i, 1); // Remove inactive stars
         }
     }
-    spawnFallingStar();
+    spawnFallingStar(); // Attempt to spawn a new star
 }
 
 function drawFallingStars() {
@@ -193,7 +190,7 @@ function drawFallingStars() {
             ctx.strokeStyle = gradient;
             ctx.lineWidth = 2;
             ctx.moveTo(star.x, star.y);
-            ctx.lineTo(star.x, star.y + star.length * Math.cos(star.angle));
+            ctx.lineTo(star.x, star.y + star.length);
             ctx.stroke();
         }
     });
@@ -270,21 +267,6 @@ document.addEventListener('mousemove', (event) => {
     mouseX = event.clientX;
     mouseY = event.clientY;
     createCursorSparkle(mouseX, mouseY);
-});
-
-// --- Background Music Autoplay Handling ---
-document.addEventListener('DOMContentLoaded', () => {
-    const playPromise = backgroundMusic.play();
-
-    if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            // Autoplay was blocked, prompt user to allow music
-            const userConsent = confirm("Would you like to play background music ('PUTRI.mp3') for a more immersive experience?");
-            if (userConsent) {
-                backgroundMusic.play();
-            }
-        });
-    }
 });
 
 // --- Main Animation Loop ---
