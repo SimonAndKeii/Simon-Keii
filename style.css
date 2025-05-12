@@ -82,6 +82,50 @@ body {
     text-shadow: 1px 1px 3px #14b8a6;
 }
 
+/* --- Audio Player --- */
+.audio-player {
+    margin: 1rem auto;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.audio-player audio {
+    width: 100%;
+    background-color: #f472b6; /* Pink background */
+    border-radius: 10px;
+    box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.6);
+    outline: none;
+}
+
+.audio-player audio::-webkit-media-controls-panel {
+    background-color: #f472b6;
+}
+
+.audio-player audio::-webkit-media-controls-play-button,
+.audio-player audio::-webkit-media-controls-pause-button {
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.audio-player audio::-webkit-media-controls-current-time-display,
+.audio-player audio::-webkit-media-controls-time-remaining-display,
+.audio-player audio::-webkit-media-controls-timeline {
+    color: #ffffff;
+    background-color: #ec4899; /* Slightly darker pink for contrast */
+}
+
+.audio-player audio::-webkit-media-controls-volume-slider {
+    background-color: #ec4899;
+}
+
+.audio-player audio::-webkit-media-controls-mute-button,
+.audio-player audio::-webkit-media-controls-volume-slider-container {
+    color: #ffffff;
+    background-color: #f472b6;
+}
+
 /* --- Photo Gallery Section --- */
 .gallery-section {
     z-index: 10;
